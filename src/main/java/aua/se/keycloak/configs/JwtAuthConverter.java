@@ -10,12 +10,10 @@ import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Component;
-
 import java.util.*;
 
 /**
      @Author: Tigran Movsesyan
-
  */
 
 @Component
