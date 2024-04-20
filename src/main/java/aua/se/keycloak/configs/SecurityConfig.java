@@ -23,14 +23,12 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final String[] WHITELIST = {
-
             "/swagger-ui/**", "/api-docs/**", "/swagger-resources/**", "/webjars/**",
-            "/api/v1/conversations/get*"
+            "/api/v1/conversations/get*", "/v3/api-docs/**",
     };
 
     @Autowired
     private JwtAuthConverter jwtAuthConverter;
-
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

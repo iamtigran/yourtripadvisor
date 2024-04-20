@@ -3,6 +3,7 @@ package aua.se.keycloak.controller;
 import aua.se.keycloak.dto.ConversationDTO;
 import aua.se.keycloak.models.Conversation;
 import aua.se.keycloak.respository.ConversationRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +18,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/conversations")
-
 public class ConversationController {
 
     private static final Logger logger = LoggerFactory.getLogger(ConversationController.class);
