@@ -1,7 +1,6 @@
-version: '3.8'
 services:
   keycloak_demo:
-    image: quay.io/keycloak/keycloak:24.0.0
+    image: quay.io/keycloak/keycloak:24.0.3
     command: start-dev
     environment:
       KC_DB: postgres
@@ -12,6 +11,9 @@ services:
       KC_DB_SCHEMA: public
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_PROXY: edge
+      KC_HOSTNAME_ADMIN_URL: https://keycloak.yourtripadvisor.am
+      KC_HOSTNAME_URL: https://keycloak.yourtripadvisor.am
     ports:
       - "8890:8080"  # Adjusted to default Keycloak port if necessary
     depends_on:
