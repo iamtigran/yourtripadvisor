@@ -29,7 +29,7 @@ public class ConversationController {
     }
 
     @GetMapping("/get")
-    @PreAuthorize("hasRole('administrator')")
+    //@PreAuthorize("hasRole('administrator')")
     public List<Conversation> getConversations() {
         return conversationRepository.findAll();
     }
@@ -52,7 +52,7 @@ public class ConversationController {
 
     @Transactional
     @DeleteMapping("/{id}/delete")
-    @PreAuthorize("hasRole('administrator')")
+  //  @PreAuthorize("hasRole('administrator')")
     public ResponseEntity<?> deleteConversation(@PathVariable Long id) {
         Optional<Conversation> conversation = conversationRepository.findById(id);
         ConversationDTO conversationDTO = new ConversationDTO();

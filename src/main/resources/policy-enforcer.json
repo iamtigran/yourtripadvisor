@@ -1,0 +1,31 @@
+{
+  "realm": "dev",
+  "auth-server-url": "http://localhost:8890",
+  "resource": "springboot-be",
+  "credentials": {
+    "secret": "T1wJ353Laqj2lBqFFwa4xcAZ67LbqE8g"
+  },
+  "paths": [
+    {
+      "path": "/swagger-ui/*",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/v3/api-docs/*",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api-docs/*",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/swagger-resources/*",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/v1/keycloak/create/user",
+      "enforcement-mode": "DISABLED"
+    }
+
+  ]
+}

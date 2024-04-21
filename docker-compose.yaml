@@ -12,8 +12,8 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_PROXY: edge
-      KC_HOSTNAME_ADMIN_URL: https://keycloak.yourtripadvisor.am
-      KC_HOSTNAME_URL: https://keycloak.yourtripadvisor.am
+     # KC_HOSTNAME_ADMIN_URL: https://keycloak.yourtripadvisor.am
+     # KC_HOSTNAME_URL: https://keycloak.yourtripadvisor.am
     ports:
       - "8890:8080"  # Adjusted to default Keycloak port if necessary
     depends_on:
