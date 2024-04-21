@@ -21,14 +21,13 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/v1/keycloak")
-@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class UserController {
 
     @Autowired
     private KeycloakSecurityUtil keycloakSecurityUtil;
 
     @Value("${realm}")
-    private String realm = "dev";
+    private String realm;
 
     @GetMapping("/users")
     public List<User> getUsers() {
