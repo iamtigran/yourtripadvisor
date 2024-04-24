@@ -41,14 +41,14 @@ services:
     networks:
       - keycloak_demo_dev_network
 
-  ai-model:
-    build:
-      context: ./src/AIModel
-      dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
-    networks:
-      - ai-network
+ai-model:
+  build:
+    context: ./src/AIModel
+    dockerfile: Dockerfile
+  ports:
+    - "5000:5000"
+  networks:
+    - ai-network
 
 volumes:
   pgdata_keycloak_demo:
