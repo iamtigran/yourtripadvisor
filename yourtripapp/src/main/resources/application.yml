@@ -30,7 +30,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://3.127.134.35:5436/gpt
+    url: jdbc:postgresql://18.199.224.157:5436/gpt
     username: keycloak
     password: Password123
     driver-class-name: org.postgresql.Driver
