@@ -1,9 +1,9 @@
 {
   "realm": "dev",
-  "auth-server-url": "http://localhost:8890",
+  "auth-server-url": "https://keycloak.yourtripadvisor.am",
   "resource": "springboot-be",
   "credentials": {
-    "secret": "T1wJ353Laqj2lBqFFwa4xcAZ67LbqE8g"
+    "secret": "6fGs9QVJmIulE8TxYl91N5LG6SKXse1B"
   },
   "paths": [
     {

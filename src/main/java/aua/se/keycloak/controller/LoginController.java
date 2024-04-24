@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
 public class LoginController {
 
-    @Value("${realm}")
+    @Value("${keycloak.realm}")
     private String realm;
 
-    @Value("${server-url}")
+    @Value("${keycloak.server-url}")
     private String serverUrl;
 
     @Value("${keycloak.resource}")

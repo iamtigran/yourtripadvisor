@@ -20,7 +20,7 @@ public class RoleController {
     @Autowired
     private KeycloakSecurityUtil keycloakSecurityUtil;
 
-    @Value("${realm}")
+    @Value("${keycloak.realm}")
     private String realm;
 
     @GetMapping("/")

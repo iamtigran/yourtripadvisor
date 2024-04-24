@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Lazy;
         name = "Keycloak",
         scheme = "bearer",
         type = SecuritySchemeType.OPENIDCONNECT,
-        openIdConnectUrl = "http://localhost:8890/realms/dev/.well-known/openid-configuration",
+        openIdConnectUrl = "https://keycloak.yourtripadvisor.am/realms/dev/.well-known/openid-configuration",
         in = SecuritySchemeIn.HEADER
 )
 public class OpenApiConfiguration {

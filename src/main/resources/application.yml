@@ -1,0 +1,64 @@
+management:
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoint:
+    health:
+      enabled: true
+      show-details: ALWAYS
+    probes:
+      enabled: true
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+    web:
+      exposure:
+        include: '*'
+    cors:
+      allowed-origins: true
+      enabled-by-default: false
+
+server:
+    port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://3.127.134.35:5436/gpt
+    username: keycloak
+    password: Password123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+  doc:
+    swagger-ui:
+      oauth:
+        client-id: springboot-be
+        client-secret: 6fGs9QVJmIulE8TxYl91N5LG6SKXse1B
+
+keycloak:
+  realm: dev
+  server-url: https://keycloak.yourtripadvisor.am
+  client-id: admin-cli
+  grant-type: password
+  name: administrator
+  password: Demo@123
+  resource: yourtrip
+  credentials:
+    secret: rdkM9GmJrSGaC4rsf1qy2nnBwUZhLvHg
+  ssl-required: external
+  use-resource-role-mappings: true
+  bearer-only: false
+  principal-attribute: preferred_username
