@@ -5,7 +5,7 @@ FROM python:3.9
 WORKDIR /code
  
 # Copy the current directory contents into the container at /code
-COPY ./requirements.txt /code/requirements.txt
+COPY requirements.txt /code/requirements.txt
  
 # Install requirements.txt 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
@@ -22,7 +22,7 @@ ENV HOME=/home/user \
 WORKDIR $HOME/app
  
 # Copy the current directory contents into the container at $HOME/app setting the owner to the user
-COPY --chown=user . $HOME/app
+COPY --chown=user ../src/AIModel $HOME/app
  
 # Start the FastAPI app on port 8001, the default port expected by Spaces
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "5000"]
