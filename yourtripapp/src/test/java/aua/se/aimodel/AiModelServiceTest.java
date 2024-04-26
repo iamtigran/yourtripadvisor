@@ -1,4 +1,4 @@
-package aua.se.keycloak;
+package aua.se.aimodel;
 
 import aua.se.aimodel.dto.AiModelRequestDTO;
 import aua.se.aimodel.service.AiModelService;
