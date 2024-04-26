@@ -42,7 +42,7 @@ services:
 
   ai-model:
     build:
-      context: ./src/AIModel
+      context: ./aimodel
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
