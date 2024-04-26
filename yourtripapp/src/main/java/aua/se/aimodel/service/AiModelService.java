@@ -24,16 +24,15 @@ public class AiModelService {
         this.objectMapper = objectMapper;
     }
 
-    public String processRequest(AiModelRequestDTO request) throws IOException {
+    public ResponseEntity<?> processRequest(AiModelRequestDTO request) throws IOException {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<AiModelRequestDTO> entity = new HttpEntity<>(request, headers);
 
         String url = "http://localhost:5000/generate";
-        ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, entity, String.class);
+        ResponseEntity<?> responseEntity = restTemplate.postForEntity(url, entity, String.class);
 
-        JsonNode rootNode = objectMapper.readTree(responseEntity.getBody());
-        String outputText = rootNode.path("output").get(0).asText();  // Extracting the first element of the "output" array
-        return outputText;
+        return responseEntity;
     }
+
 }

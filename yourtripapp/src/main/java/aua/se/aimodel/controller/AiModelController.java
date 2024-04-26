@@ -23,7 +23,7 @@ public class AiModelController {
     @PostMapping
     public ResponseEntity<?> generateText(@RequestBody AiModelRequestDTO request) {
         try {
-            String response = aiModelService.processRequest(request);
+            ResponseEntity<?> response = aiModelService.processRequest(request);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Error processing request: " + e.getMessage());
