@@ -42,12 +42,24 @@ services:
 
   ai-model:
     build:
-      context: ./src/AIModel
+      context: aimodel
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
     networks:
-      - ai-network
+      - keycloak-auth
+
+  yourtripapp:
+    image: yourtripapp
+    build: ./yourtripapp
+    env_file: ./yourtripapp.env
+    container_name: yourtripadvisor
+    ports:
+      - '7013:7013'
+      - '7023:7023'
+    networks:
+      - keycloak-auth
+
 
 volumes:
   postgres_data:

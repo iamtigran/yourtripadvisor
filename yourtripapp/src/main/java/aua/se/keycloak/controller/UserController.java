@@ -1,9 +1,12 @@
 package aua.se.keycloak.controller;
 
 
+import aua.se.keycloak.dto.RegistrationResponse;
 import aua.se.keycloak.dto.Role;
 import aua.se.keycloak.dto.User;
 import aua.se.keycloak.keycloak.KeycloakSecurityUtil;
+import com.nimbusds.jose.shaded.gson.Gson;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.ws.rs.core.Response;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.common.util.CollectionUtil;
@@ -11,6 +14,8 @@ import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -21,14 +26,14 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/v1/keycloak")
-//@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
 public class UserController {
 
     @Autowired
     private KeycloakSecurityUtil keycloakSecurityUtil;
 
-    //@Value("${keycloak.realm}")
-    private String realm ="dev";
+    @Value("${keycloak.realm}")
+    private String realm;
 
     @GetMapping("/users")
     public List<User> getUsers() {
@@ -44,20 +49,58 @@ public class UserController {
     }
 
     @PostMapping("/create/user")
-    public Response createUser(User user) {
+    public ResponseEntity<?> createUser(@RequestBody User user, HttpServletRequest request) {
+        System.out.println("Content-Type: " + request.getContentType());
+        System.out.println("Request Payload: " + new Gson().toJson(user));
+
+        // Your existing logic
         UserRepresentation userRep = mapUserRep(user);
         Keycloak keycloak = keycloakSecurityUtil.getKeycloakInstance();
-        keycloak.realm(realm).users().create(userRep);
-        return Response.ok(user).build();
+        Response keycloakResponse = keycloak.realm(realm).users().create(userRep);
+
+        // More detailed response handling
+        if (keycloakResponse.getStatus() != Response.Status.CREATED.getStatusCode()) {
+            return ResponseEntity
+                    .status(keycloakResponse.getStatus())
+                    .body("Error processing registration: " + keycloakResponse.getStatusInfo().getReasonPhrase());
+        }
+
+        RegistrationResponse response = new RegistrationResponse();
+        response.setEmail(user.getEmail());
+        response.setUserName(user.getUserName());
+        response.setFirstName(user.getFirstName());
+        response.setLastName(user.getLastName());
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-
     @PutMapping("/update/user")
-    public Response updateUser(User user) {
-        UserRepresentation userRep = mapUserRep(user);
-        Keycloak keycloak = keycloakSecurityUtil.getKeycloakInstance();
-        keycloak.realm(realm).users().get(user.getId()).update(userRep);
-        return Response.ok(user).build();
+    public Response updateUser(@RequestBody User user) {
+        try {
+            UserRepresentation userRep = mapUserRep(user);
+            Keycloak keycloak = keycloakSecurityUtil.getKeycloakInstance();
+            keycloak.realm(realm).users().get(user.getId()).update(userRep);
+            return Response.ok(user).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().build();
+        }
+    }
+
+    @PutMapping("/update/password")
+    public Response resetPassword(@RequestParam String username, @RequestParam String password) {
+        try {
+            Keycloak keycloak = keycloakSecurityUtil.getKeycloakInstance();
+            UserRepresentation userRep = keycloak.realm(realm).users().search(username).get(0);
+            CredentialRepresentation credential = new CredentialRepresentation();
+            credential.setTemporary(false);
+            credential.setType(CredentialRepresentation.PASSWORD);
+            credential.setValue(password);
+            keycloak.realm(realm).users().get(userRep.getId()).resetPassword(credential);
+            return Response.ok("Password reset successfully for user: " + username).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().build();
+        }
     }
 
 

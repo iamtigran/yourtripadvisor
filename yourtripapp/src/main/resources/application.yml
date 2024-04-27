@@ -4,7 +4,6 @@ management:
       enabled: true
     readinessState:
       enabled: true
-
   tracing:
     sampling:
       probability: 1.0
@@ -26,11 +25,11 @@ management:
       enabled-by-default: false
 
 server:
-    port: 8081
+  port: 8081
 
 spring:
   datasource:
-    url: jdbc:postgresql://18.199.224.157:5436/gpt
+    url: jdbc:postgresql://18.159.211.30:5436/gpt
     username: keycloak
     password: Password123
     driver-class-name: org.postgresql.Driver
@@ -45,8 +44,8 @@ spring:
   doc:
     swagger-ui:
       oauth:
-        client-id: springboot-be
-        client-secret: 6fGs9QVJmIulE8TxYl91N5LG6SKXse1B
+        client-id: ${SWAGGER_CLIENT_ID}
+        client-secret: ${SWAGGER_CLIENT_SECRET}
 
 keycloak:
   realm: dev
