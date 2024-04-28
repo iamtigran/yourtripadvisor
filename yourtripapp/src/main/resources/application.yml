@@ -29,7 +29,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://18.159.211.30:5436/gpt
+    url: jdbc:postgresql://database.yourtripadvisor.am:5436/gpt
     username: keycloak
     password: Password123
     driver-class-name: org.postgresql.Driver
@@ -61,3 +61,4 @@ keycloak:
   use-resource-role-mappings: true
   bearer-only: false
   principal-attribute: preferred_username
+

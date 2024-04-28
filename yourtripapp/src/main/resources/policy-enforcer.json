@@ -31,15 +31,15 @@
       "enforcement-mode": "DISABLED"
     },
     {
-      "path": "/api/v1/generate",
-      "enforcement-mode": "DISABLED"
-    },
-    {
       "path": "/api/v1/keycloak/update/password",
       "enforcement-mode": "DISABLED"
     },
     {
       "path": "/api/v1/auth/logout",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/v1/premium/upgrade",
       "enforcement-mode": "DISABLED"
     }
   ]

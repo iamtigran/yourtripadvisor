@@ -25,7 +25,7 @@ public class DataHelper {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    private final String baseUrl = "http://localhost:8001/generate";
+    private final String baseUrl = "https://0b35-37-252-91-114.ngrok-free.app/generate";
 
     @Autowired
     private ConversationRepository conversationRepository;
