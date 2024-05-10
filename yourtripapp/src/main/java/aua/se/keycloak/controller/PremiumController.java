@@ -43,6 +43,7 @@ public class PremiumController {
         codes.add("kasjkajssaas");
         codes.add("dlskslddsssd");
         codes.add("sasssasa");
+        codes.add("upgrade");
 
         Keycloak keycloak = keycloakSecurityUtil.getKeycloakInstance();
         UsersResource usersResource = keycloak.realm(realm).users();

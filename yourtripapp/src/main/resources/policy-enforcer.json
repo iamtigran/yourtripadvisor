@@ -41,6 +41,14 @@
     {
       "path": "/api/v1/premium/upgrade",
       "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/v1/generate",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/v1/generatePremium",
+      "enforcement-mode": "DISABLED"
     }
   ]
 }
