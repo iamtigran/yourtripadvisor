@@ -62,3 +62,7 @@ keycloak:
   bearer-only: false
   principal-attribute: preferred_username
 
+externalApi:
+  free-version: https://45c2-37-252-89-233.ngrok-free.app/generate
+  premium-version: https://1f89-37-252-89-87.ngrok-free.app/query/
+

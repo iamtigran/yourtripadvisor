@@ -16,7 +16,7 @@ public class DataHelperAdapterPremium {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    private final String baseUrl = "http://3.72.1.153:8000/query/";
+    private final String baseUrl = "https://1f89-37-252-89-87.ngrok-free.app/query/";
 
 
     public AiResponsePremiumDTO callAiPremium(String text) {
