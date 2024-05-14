@@ -1,0 +1,54 @@
+{
+  "realm": "dev",
+  "auth-server-url": "https://keycloak.yourtripadvisor.am",
+  "resource": "springboot-be",
+  "credentials": {
+    "secret": "6fGs9QVJmIulE8TxYl91N5LG6SKXse1B"
+  },
+  "paths": [
+    {
+      "path": "/swagger-ui/*",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/v3/api-docs/*",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api-docs/*",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/swagger-resources/*",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/v1/keycloak/create/user",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/v1/auth/login",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/v1/keycloak/update/password",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/v1/auth/logout",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/v1/premium/upgrade",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/v1/generate",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/v1/generatePremium",
+      "enforcement-mode": "DISABLED"
+    }
+  ]
+}
