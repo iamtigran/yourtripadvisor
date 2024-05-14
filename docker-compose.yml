@@ -47,7 +47,7 @@ services:
     ports:
       - "5000:5000"
     networks:
-      - keycloak-auth
+      - keycloak-aut
 
   yourtripapp:
     image: yourtripapp
