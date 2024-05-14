@@ -4,7 +4,6 @@ management:
       enabled: true
     readinessState:
       enabled: true
-
   tracing:
     sampling:
       probability: 1.0
@@ -26,11 +25,11 @@ management:
       enabled-by-default: false
 
 server:
-    port: 8081
+  port: 8081
 
 spring:
   datasource:
-    url: jdbc:postgresql://18.199.224.157:5436/gpt
+    url: jdbc:postgresql://database.yourtripadvisor.am:5436/gpt
     username: keycloak
     password: Password123
     driver-class-name: org.postgresql.Driver
@@ -45,8 +44,8 @@ spring:
   doc:
     swagger-ui:
       oauth:
-        client-id: springboot-be
-        client-secret: 6fGs9QVJmIulE8TxYl91N5LG6SKXse1B
+        client-id: ${SWAGGER_CLIENT_ID}
+        client-secret: ${SWAGGER_CLIENT_SECRET}
 
 keycloak:
   realm: dev
@@ -62,3 +61,8 @@ keycloak:
   use-resource-role-mappings: true
   bearer-only: false
   principal-attribute: preferred_username
+
+externalApi:
+  free-version: https://45c2-37-252-89-233.ngrok-free.app/generate
+  premium-version: https://1f89-37-252-89-87.ngrok-free.app/query/
+

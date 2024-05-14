@@ -1,0 +1,2 @@
+fastapi uvicorn[standard]
+# Include any other libraries your app depends on
